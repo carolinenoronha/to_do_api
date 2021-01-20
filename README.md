@@ -1,5 +1,5 @@
 # TO-DO API
 
-:br: Projeto de criação de API autoral
+Projeto de criação de API para aplicativo de to-do lists.
 
 Por: Caroline Noronha
