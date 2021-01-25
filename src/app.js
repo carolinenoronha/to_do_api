@@ -1,18 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000 || 8080;
-
+const bd = require('./infra/bd')
+app.use(bodyParser.json());
 const tarefaController = require('./controllers/tarefa-controller')
+tarefaController(app, bd);
+
 const usuarioController = require('./controllers/usuario-controller')
+usuarioController(app, bd);
 
-
-
-app.get('/tarefas', tarefaController.getTarefa())
-app.post('/tarefas', tarefaController.postTarefa())
-app.get('/usuarios', usuarioController.getUsuario())
-app.post('/usuarios', usuarioController.postUsuario())
-
-
-
-
-app.listen(port, ()=> console.log('Server ON'))
+app.listen(port, ()=> console.log('Server ON'));
