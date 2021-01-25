@@ -1,15 +1,25 @@
-class tarefaController {
+const Tarefa = require('../models/tarefa-model')
 
-    static getTarefa(){
-        return( (req,resp)=>
-        resp.send("<h1>Rota ativada com GET e recurso tarefas</h1>"))
-    }
 
-    static postTarefa(){
-        return( (req,resp)=>
-        resp.send("<h1>Rota POST de tarefa ativada: tarefa adicionada ao banco de dados.</h1>"))
-    }
+module.exports = (app, bd) => {
+    app.get('/tarefas', (req, resp) => 
+        {
+            resp.send(bd.tarefasBD)
+        }
+    )
 
+    app.get('/tarefas/:', (req, resp)=>
+        {
+  
+
+        }
+    )
+
+    app.post('/tarefas', (req, resp) => 
+        {
+            const trf = new Tarefa(req.body.titulo, req.body.descricao, req.body.status, req.body.data)
+            bd.tarefasBD.push(trf)
+            resp.send('<h1>Tarefa adicionada ao banco de dados</h1>')
+        }
+    )
 }
-
-module.exports = tarefaController;
