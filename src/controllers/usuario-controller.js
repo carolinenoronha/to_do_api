@@ -4,7 +4,12 @@ const Usuario = require('../models/usuario-model')
 module.exports = (app, bd) => {
     app.get('/usuarios', (req, resp) => 
         {
-            resp.send(bd.usuariosBD)
+
+            bd.all("SELECT * FROM USUARIOS;", (error, rows)=>{
+                if (error) throw new Error("Erro ao consultar tabela.") 
+                else resp.send(rows)
+            }) 
+
         }
     )
 
