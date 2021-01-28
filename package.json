@@ -4,7 +4,7 @@
   "description": "Projeto de criação de API para aplicativo de to-do lists.",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon ./src/app.js"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
+    "jest": "^26.6.3",
     "nodemon": "^2.0.7"
   }
 }
