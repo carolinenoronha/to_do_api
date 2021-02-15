@@ -6,7 +6,9 @@ const bd = require('./infra/sqlite-db')/* require('./infra/bd'); */
 /* const db =  */
 const sqlite = require('sqlite3');
 
+const cors = require('cors')
 
+app.use(cors());
 
 app.use(bodyParser.json());
 
