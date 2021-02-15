@@ -2,79 +2,70 @@
 const usuariosDao = require('../DAO/usuarios-dao')
 
 module.exports = (app, bd) => {
-    app.get('/usuarios', (req, resp) => 
-        {
-            const classeGET = new usuariosDao(bd)
-            classeGET.listaUsuarios()
-                .then((usuarios) => {
-                    resp.send(usuarios)
-                })
 
-                .catch((error) =>{
-                    resp.send(error)
-                })
+const usuDAO = new usuariosDao(bd)
 
- 
+    app.post('/usuarios', async (req, resp) => 
+    {
+        try{
+            const retorna = await usuDAO.criaUsuarios(req.body.NOME, req.body.EMAIL, req.body.SENHA);
+            resp.status(200).send(retorna);
         }
-    )
-
-    app.get('/usuarios/:email', (req, resp)=>
-        {
-            for (let usr of bd.usuariosBD)
-            {
-                if(req.params.email == usr.email){resp.send(usr)}
-            }
-
-            resp.send("Usuário não encontrado")
-
+        catch(error){
+            resp.send(error);
         }
-    )
+    })
 
-    app.post('/usuarios', (req, resp) => 
+    app.get('/usuarios', async (req, resp) => 
         {
-            const classePOST = new usuariosDao(bd)
-            classePOST.criaUsuarios(req.body)
-                .then((usuarios) => {
-                    resp.send(usuarios)
-                })
-
-                .catch((error) =>{
-                    resp.send(error)
-                })
-              
-            
-
+                try{
+                    const retorna = await usuDAO.listaUsuarios();
+                    resp.status(200).send(retorna);
+                }
+                catch(error){
+                    resp.send(error);
+                }
         })
 
-        
     
-
-    app.delete('/usuarios/:email', (req,resp)=>
+    app.get('/usuarios/:email', async (req, resp)=>
         {
-            for(let i =0; i <bd.usuariosBD.length; i++)
-            {
-                if(req.params.email == bd.usuariosBD[i].email)
-                {bd.usuariosBD.splice(i,1)
-                resp.send("Usuário deletado")}
+            try{
+                const retorna = await usuDAO.usuarioUnico(req.params.email);
+                resp.status(200).send(retorna);
             }
-
-            resp.send("Usuário não encontrado")
+            catch(error){
+                resp.send(error);
+            }
         }
     )
 
-    app.put('/usuarios/:email', (req,resp)=>
+    app.put('/usuarios/:email', async (req,resp)=>
         {
-            for (usr of bd.usuariosBD)
-            {
-                if(req.params.email == usr.email)
-                {usr.nome = req.body.nome
-                 usr.senha = req.body.senha
-                 resp.send("Usuário alterado")}
+            try{
+                const infos = [req.body.id, req.body.nome, req.body.email, req.body.senha]
+                const retorna = await usuDAO.atualizaUsuarios(infos,req.params.email);
+                resp.status(200).send(retorna);
             }
-
-            resp.send("Usuário não encontrado")
+            catch(error){
+                resp.send(error);
+            }
         }
     
     )
+
+    app.delete('/usuarios/:email', async (req,resp)=>
+    {
+        try{
+            const retorna = await usuDAO.deletaUsuarios(req.params.email);
+            resp.status(200).send(retorna);
+        }
+        catch(error){
+            resp.send(error);
+        }
+    }
+)
+
 }
+
 
