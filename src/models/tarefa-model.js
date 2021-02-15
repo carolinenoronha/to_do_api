@@ -1,5 +1,4 @@
-
-module.exports = class Tarefa{
+class tarefaModel {
 
     constructor(titulo, descricao, status,data){
         this.titulo = titulo;
@@ -8,3 +7,5 @@ module.exports = class Tarefa{
         this.data = data;
     }   
 }
+
+module.exports = tarefaModel;
