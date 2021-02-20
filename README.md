@@ -10,19 +10,19 @@ O projeto foi desenvolvido utilizando *Node.js*, portanto, certifique-se de que 
 
 #### Usuários:
 
-Rota GET para listar usuários: http://localhost:3000/usuarios
-Rota GET de busca de usuário por email: http://localhost:3000/usuarios/:email
-Rota POST para inserir usuários no banco de dados: http://localhost:3000/usuarios
-Rota PUT para alteração de dados de usuário: http://localhost:3000/usuarios/:email
-Rota DELETE para apagra um registro na tabela de usuários: http://localhost:3000/usuarios/:email
+- Rota GET para listar usuários: http://localhost:3000/usuarios 
+- Rota GET de busca de usuário por email: http://localhost:3000/usuarios/:email 
+- Rota POST para inserir usuários no banco de dados: http://localhost:3000/usuarios 
+- Rota PUT para alteração de dados de usuário: http://localhost:3000/usuarios/:email
+- Rota DELETE para apagra um registro na tabela de usuários: http://localhost:3000/usuarios/:email
 
 #### Tarefas: 
 
-Rota GET para listar tarefas de usuários: http://localhost:3000/tarefas
-Rota GET de busca de tarefas por título: http://localhost:3000/tarefas/:titulo
-Rota POST para inserir tarefas no banco de dados: http://localhost:3000/tarefas 
-Rota PUT para alteração de dados de tarefas: http://localhost:3000/tarefas/:titulo 
-Rota DELETE para apagar um registro na tabela de tarefas: http://localhost:3000/tarefas/:titulo
+- Rota GET para listar tarefas de usuários: http://localhost:3000/tarefas
+- Rota GET de busca de tarefas por título: http://localhost:3000/tarefas/:titulo
+- Rota POST para inserir tarefas no banco de dados: http://localhost:3000/tarefas 
+- Rota PUT para alteração de dados de tarefas: http://localhost:3000/tarefas/:titulo 
+- Rota DELETE para apagar um registro na tabela de tarefas: http://localhost:3000/tarefas/:titulo
 
 
 ### Dependências do projeto
